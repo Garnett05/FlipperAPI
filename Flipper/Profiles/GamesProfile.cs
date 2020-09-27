@@ -8,7 +8,9 @@ namespace Flipper.Profiles
     {
         public GamesProfile()
         {
+            //Source --> Target
             CreateMap<Games, GamesReadDto>();
+            CreateMap<GamesCreateDto, Games>();
         }
     }
 }

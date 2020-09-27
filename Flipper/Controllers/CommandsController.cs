@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Flipper.Data;
 using Flipper.Dtos;
@@ -32,7 +30,7 @@ namespace Flipper.Controllers
             return Ok(_mapper.Map<IEnumerable<GamesReadDto>>(gamesItems));
         }
         //GET api/commands/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetGameById")]
         public ActionResult <GamesReadDto> GetGameById(int id)
         {
             var gamesItems = _repository.GetGameById(id);
@@ -41,6 +39,18 @@ namespace Flipper.Controllers
                 return Ok(_mapper.Map<GamesReadDto>(gamesItems));
             }
             return NotFound();
+        }
+        //POST api/games
+        [HttpPost]
+        public ActionResult<GamesReadDto> CreateGame(GamesCreateDto gameCreateDto)
+        {
+            var gameModel = _mapper.Map<Games>(gameCreateDto);
+            _repository.CreateCommand(gameModel);
+            _repository.SaveChanges();
+
+            var gameReadDto = _mapper.Map<GamesReadDto>(gameModel);
+
+            return CreatedAtRoute(nameof(GetGameById), new { Id = gameReadDto.Id }, gameReadDto);            
         }
     }
 }
