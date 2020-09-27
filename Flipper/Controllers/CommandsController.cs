@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Flipper.Controllers
 {
     //api/commands
-    [Route("api/commands")]
+    [Route("api/games")]
     [ApiController]
     public class CommandsController : ControllerBase
     {
@@ -22,17 +22,17 @@ namespace Flipper.Controllers
         //private readonly MockCommanderRepo _repository = new MockCommanderRepo();
         //GET api/commands
         [HttpGet]        
-        public ActionResult <IEnumerable<Command>> GetAllCommands()
-        { 
-            var commandItems = _repository.GetAllCommands();
-            return Ok(commandItems);
+        public ActionResult <IEnumerable<Games>> GetAllGames()
+        {
+            var gamesItems = _repository.GetAllGames();
+            return Ok(gamesItems);
         }
         //GET api/commands/{id}
         [HttpGet("{id}")]
-        public ActionResult <Command> GetCommandById(int id)
+        public ActionResult <Games> GetCommandById(int id)
         {
-            var commandItem = _repository.GetCommandById(id);
-            return Ok(commandItem);
+            var gamesItems = _repository.GetGameById(id);
+            return Ok(gamesItems);
         }
     }
 }

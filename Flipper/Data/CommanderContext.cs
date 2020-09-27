@@ -10,6 +10,6 @@ namespace Flipper.Data
 
         }
 
-        public DbSet<Command> Commands { get; set; }
+        public DbSet<Games> Games { get; set; }
     }
 }

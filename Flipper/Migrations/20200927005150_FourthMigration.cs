@@ -2,19 +2,19 @@
 
 namespace Flipper.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class FourthMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Commands",
+                name: "Games",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HowTo = table.Column<string>(maxLength: 250, nullable: false),
-                    Line = table.Column<string>(nullable: false),
-                    Platform = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(maxLength: 75, nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -14,14 +14,14 @@ namespace Flipper.Data
             _context = context;
         }
         
-        public IEnumerable<Command> GetAllCommands()
+        public IEnumerable<Games> GetAllGames()
         {
-            return _context.Commands.ToList();
+            return _context.Games.ToList();
         }
 
-        public Command GetCommandById(int id)
+        public Games GetGameById(int id)
         {
-            return _context.Commands.FirstOrDefault(x => x.Id == id);
+            return _context.Games.FirstOrDefault(x => x.Id == id);
         }
     }
 }
