@@ -16,13 +16,13 @@ namespace Flipper.Data
             _context = context;
         }
 
-        public void CreateCommand(Games cmd)
+        public void CreateGame(Games game)
         {
-            if (cmd == null)
+            if (game == null)
             {
-                throw new ArgumentNullException(nameof(cmd));
+                throw new ArgumentNullException(nameof(game));
             }
-            _context.Games.Add(cmd);
+            _context.Games.Add(game);
         }
 
         public IEnumerable<Games> GetAllGames()
@@ -38,6 +38,11 @@ namespace Flipper.Data
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
+        }
+
+        public void UpdateGame(Games game)
+        {
+            //Nothing
         }
     }
 }

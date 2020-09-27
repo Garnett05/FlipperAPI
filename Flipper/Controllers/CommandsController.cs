@@ -4,6 +4,7 @@ using AutoMapper;
 using Flipper.Data;
 using Flipper.Dtos;
 using Flipper.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flipper.Controllers
@@ -14,12 +15,12 @@ namespace Flipper.Controllers
     public class CommandsController : ControllerBase
     {
         private readonly ICommanderRepo _repository;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper;        
 
         public CommandsController (ICommanderRepo repository, IMapper mapper)
         {
             _repository = repository;
-            _mapper = mapper;
+            _mapper = mapper;            
         }
         //private readonly MockCommanderRepo _repository = new MockCommanderRepo();
         //GET api/commands
@@ -45,12 +46,27 @@ namespace Flipper.Controllers
         public ActionResult<GamesReadDto> CreateGame(GamesCreateDto gameCreateDto)
         {
             var gameModel = _mapper.Map<Games>(gameCreateDto);
-            _repository.CreateCommand(gameModel);
+            _repository.CreateGame(gameModel);
             _repository.SaveChanges();
 
             var gameReadDto = _mapper.Map<GamesReadDto>(gameModel);
 
             return CreatedAtRoute(nameof(GetGameById), new { Id = gameReadDto.Id }, gameReadDto);            
+        }
+        //PUT api/games/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateGame (int id, GamesUpdateDto gameUpdateDto)
+        {
+            var gameModelFromRepo = _repository.GetGameById(id);
+            if (gameModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(gameUpdateDto, gameModelFromRepo);
+
+            _repository.UpdateGame(gameModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
         }
     }
 }

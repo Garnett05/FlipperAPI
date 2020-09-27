@@ -6,6 +6,7 @@ using AutoMapper;
 using Flipper.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,7 @@ namespace Flipper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

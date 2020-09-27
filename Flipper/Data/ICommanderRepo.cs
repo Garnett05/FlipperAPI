@@ -9,6 +9,7 @@ namespace Flipper.Data
         bool SaveChanges();
         IEnumerable<Games> GetAllGames();
         Games GetGameById(int id);
-        void CreateCommand(Games cmd);
+        void CreateGame(Games game);
+        void UpdateGame(Games game);
     }
 }

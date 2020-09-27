@@ -2,7 +2,7 @@
 
 namespace Flipper.Dtos
 {
-    public class GamesCreateDto
+    public class GamesUpdateDto
     {
         //public int Id { get; set; } O autoincrement ocorre direto no DB
         [Required]

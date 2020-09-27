@@ -11,6 +11,7 @@ namespace Flipper.Profiles
             //Source --> Target
             CreateMap<Games, GamesReadDto>();
             CreateMap<GamesCreateDto, Games>();
+            CreateMap<GamesUpdateDto, Games>();
         }
     }
 }
