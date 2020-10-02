@@ -11,5 +11,6 @@ namespace Flipper.Data
         Games GetGameById(int id);
         void CreateGame(Games game);
         void UpdateGame(Games game);
+        void DeleteGame(Games game);
     }
 }

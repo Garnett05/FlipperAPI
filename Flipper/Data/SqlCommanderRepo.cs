@@ -25,6 +25,15 @@ namespace Flipper.Data
             _context.Games.Add(game);
         }
 
+        public void DeleteGame(Games game)
+        {
+            if (game == null)
+            {
+                throw new ArgumentNullException(nameof(game));
+            }
+            _context.Games.Remove(game);
+        }
+
         public IEnumerable<Games> GetAllGames()
         {
             return _context.Games.ToList();
@@ -42,7 +51,7 @@ namespace Flipper.Data
 
         public void UpdateGame(Games game)
         {
-            //Nothing
+            //Nothing 
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using Flipper.Data;
 using Flipper.Dtos;
 using Flipper.Models;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flipper.Controllers
@@ -68,5 +67,44 @@ namespace Flipper.Controllers
             _repository.SaveChanges();
             return NoContent();
         }
+        //PATCH api/games/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialGameUpdate (int id, JsonPatchDocument<GamesUpdateDto> patchDoc)
+        {
+            var gameModelFromRepo = _repository.GetGameById(id);
+            if (gameModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var gameToPatch = _mapper.Map<GamesUpdateDto>(gameModelFromRepo);
+            if (ModelState.IsValid)
+            {
+                patchDoc.ApplyTo(gameToPatch, ModelState);
+                if (!TryValidateModel(gameToPatch))
+                {
+                    return ValidationProblem(ModelState);
+                }
+                _mapper.Map(gameToPatch, gameModelFromRepo);
+                _repository.UpdateGame(gameModelFromRepo);
+                _repository.SaveChanges();
+                return NoContent();
+            }
+            return NotFound();
+        }
+        
+        //DELE api/games/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteGame(int id)
+        {
+            var gameModelFromRepo = _repository.GetGameById(id);
+            if (gameModelFromRepo == null){
+                return NotFound();
+            }
+            _repository.DeleteGame(gameModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
+        }
+
     }
 }
