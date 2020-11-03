@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Flipper.Migrations
 {
-    [DbContext(typeof(CommanderContext))]
-    partial class CommanderContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(GroupsContext))]
+    partial class GroupsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -18,16 +18,18 @@ namespace Flipper.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Flipper.Models.Games", b =>
+            modelBuilder.Entity("Flipper.Models.Groups", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdGame")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUserGroupLeader")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -38,9 +40,12 @@ namespace Flipper.Migrations
                         .HasColumnType("nvarchar(75)")
                         .HasMaxLength(75);
 
+                    b.Property<int>("NumberPlayers")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Commands");
+                    b.ToTable("Groups");
                 });
 #pragma warning restore 612, 618
         }
