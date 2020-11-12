@@ -28,6 +28,21 @@ namespace Flipper
             services.AddDbContext<GroupsContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("GroupsConnection")));
 
+            services.AddDbContext<UsersContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("UsersConnection")));
+
+            services.AddDbContext<GroupsxUsersContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("GroupsxUsersConnection")));
+
+            services.AddDbContext<IconsUserContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("IconsUserConnection")));
+
+            services.AddDbContext<IconsGroupContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("IconsGroupConnection")));
+
+            services.AddDbContext<MessagesContext>(opt => opt.UseSqlServer(
+                Configuration.GetConnectionString("MessagesConnection")));
+
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -38,6 +53,16 @@ namespace Flipper
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
             
             services.AddScoped<IGroupsRepo, SqlGroupsRepo>();
+
+            services.AddScoped<IUsersRepo, SqlUsersRepo>();
+
+            services.AddScoped<IGroupsxUsersRepo, SqlGroupsxUsersRepo>();
+
+            services.AddScoped<IIconsUserRepo, SqlIconsUserRepo>();
+
+            services.AddScoped<IIconsGroupRepo, SqlIconsGroupRepo>();
+
+            services.AddScoped<IMessagesRepo, SqlMessagesRepo>();
 
         }
 

@@ -3,14 +3,16 @@ using Flipper.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Flipper.Migrations
+namespace Flipper.Migrations.GroupsxUsers
 {
-    [DbContext(typeof(GroupsContext))]
-    partial class GroupsContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(GroupsxUsersContext))]
+    [Migration("20201112002521_GroupsxUsersMigration")]
+    partial class GroupsxUsersMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,34 +20,22 @@ namespace Flipper.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Flipper.Models.Groups", b =>
+            modelBuilder.Entity("Flipper.Models.GroupsxUsers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdGame")
+                    b.Property<int>("IdGroup")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUserGroupLeader")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(75)")
-                        .HasMaxLength(75);
-
-                    b.Property<int>("NumberPlayers")
+                    b.Property<int>("IdUser")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Groups");
+                    b.ToTable("GroupsxUsers");
                 });
 #pragma warning restore 612, 618
         }
