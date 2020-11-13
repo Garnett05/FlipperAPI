@@ -13,5 +13,7 @@ namespace Flipper.Models
         public int IdIconUser { get; set; }
         [Required]
         public string ImageUrl { get; set; }
+        [Required]
+        public int IdUser { get; set; }
     }
 }
