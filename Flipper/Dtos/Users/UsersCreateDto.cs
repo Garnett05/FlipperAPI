@@ -24,6 +24,8 @@ namespace Flipper.Dtos
         [Required]
         [MaxLength(20)]
         public string Psw { get; set; }
+        [Required]
+        public int IdIcon { get; set; }
 
     }
 }

@@ -6,6 +6,5 @@ namespace Flipper.Dtos
     {
         public int IdIconUser { get; set; }
         public string ImageUrl { get; set; }
-        public int IdUser { get; set; }
     }
 }
