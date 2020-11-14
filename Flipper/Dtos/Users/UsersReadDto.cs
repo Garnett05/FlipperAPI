@@ -10,6 +10,6 @@ namespace Flipper.Dtos
         public string Email { get; set; }
         public string Nickname { get; set; }
         public string Psw { get; set; }
-        public int ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

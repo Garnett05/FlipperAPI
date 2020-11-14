@@ -26,6 +26,5 @@ namespace Flipper.Dtos
         public string Psw { get; set; }
         [Required]
         public string ImageUrl { get; set; }
-
     }
 }
