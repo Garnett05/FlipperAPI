@@ -22,7 +22,5 @@ namespace Flipper.Models
         public int IdUserGroupLeader { get; set; }
         [Required]
         public string ImageUrl { get; set; }
-        [Required]
-        public int IdIcon { get; set; }
     }
 }

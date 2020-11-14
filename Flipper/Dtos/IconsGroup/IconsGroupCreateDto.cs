@@ -12,6 +12,8 @@ namespace Flipper.Dtos
         public int IdIconGroup { get; set; }
         [Required]
         public string ImageUrl { get; set; }
+        [Required]
+        public int IdGame { get; set; }
 
     }
 }

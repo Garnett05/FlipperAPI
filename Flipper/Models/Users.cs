@@ -25,7 +25,7 @@ namespace Flipper.Models
         [MaxLength(20)]
         public string Psw { get; set; }
         [Required]
-        public int IdIcon { get; set; }
+        public string ImageUrl { get; set; }
 
     }
 }
