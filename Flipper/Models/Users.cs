@@ -14,7 +14,7 @@ namespace Flipper.Models
         [MaxLength(100)]
         public string Name { get; set; }
         [Required]
-        public int Age { get; set; }
+        public DateTime birth { get; set; }
         [Required]
         [MaxLength(100)]
         public string Email { get; set; }

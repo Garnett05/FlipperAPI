@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Flipper.Migrations.Users
 {
@@ -13,7 +14,7 @@ namespace Flipper.Migrations.Users
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Age = table.Column<int>(nullable: false),
+                    birth = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: false),
                     Nickname = table.Column<string>(maxLength: 50, nullable: false),
                     Psw = table.Column<string>(maxLength: 20, nullable: false),
