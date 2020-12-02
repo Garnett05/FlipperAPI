@@ -1,4 +1,5 @@
 ﻿using Flipper.Models;
+using System;
 
 namespace Flipper.Dtos
 {
@@ -6,7 +7,7 @@ namespace Flipper.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
+        public DateTime birth { get; set; }
         public string Email { get; set; }
         public string Nickname { get; set; }
         public string Psw { get; set; }
